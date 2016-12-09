@@ -1,0 +1,14 @@
+# Vagrant stuff
+.vagrant
+*.log
+
+# Ansible
+*.retry
+*.log
+
+# Python
+*.pyc
+
+# Node
+npm-debug.log*
+node_modules

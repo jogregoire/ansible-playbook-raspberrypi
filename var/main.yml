@@ -1,0 +1,3 @@
+---
+host_name: "raspi"
+path_to_ssh_key: ""  # local path to your public key file such as ~/.ssh/id_rsa.pub

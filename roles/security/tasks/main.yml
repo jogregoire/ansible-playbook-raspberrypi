@@ -1,0 +1,11 @@
+---
+# commented out until I find a fix for the following task not working:
+# key.stats.exists always return false on Windows's Ubuntu bash
+# - name: Security | check if local public key exists
+#   stat: path={{path_to_ssh_key}}
+#   register: key
+
+- name: Security | add your public key from {{path_to_ssh_key}}
+  authorized_key: user="pi" key="{{ lookup('file', path_to_ssh_key) }}"
+  ignore_errors: yes
+#  when: key.stat.exists

@@ -1,0 +1,12 @@
+---
+- name: Main playbook | upgrade apt packages
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Main playbook | install additional packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - htop
+    - nmap
+    - vim
+    - tmux
+    - dstat

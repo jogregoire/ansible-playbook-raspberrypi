@@ -1,0 +1,4 @@
+# roles to install from ansible galaxy
+- src: geerlingguy.raspberry-pi
+- src: geerlingguy.redis
+- src: geerlingguy.security

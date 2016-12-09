@@ -1,0 +1,3 @@
+---
+#local path to your public key file
+path_to_ssh_key: ""

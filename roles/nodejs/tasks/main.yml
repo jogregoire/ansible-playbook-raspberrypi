@@ -1,0 +1,25 @@
+---
+- name: Check if my_package is installed
+  command: dpkg-query -W node
+  register: my_package_check_deb
+  failed_when: my_package_check_deb.rc > 1
+  changed_when: my_package_check_deb.rc == 1
+
+- name: Download my_package
+  get_url:
+    url="http://node-arm.herokuapp.com/node_latest_armhf.deb"
+    dest="/tmp/node_latest_armhf.deb"
+  when: my_package_check_deb.rc == 1
+
+- name: Install my_package
+  apt: deb="/tmp/node_latest_armhf.deb"
+  sudo: true
+  when: my_package_check_deb.rc == 1
+
+- name: Main playbook | install npm modules globally
+  npm: name={{item}} global=yes
+  with_items:
+    - jslint
+    - yarn
+    - rimraf
+  when: my_package_check_deb.rc == 1

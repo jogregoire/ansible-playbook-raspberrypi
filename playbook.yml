@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: pi
+  become: yes
+  become_method: sudo
+
+  vars_files:
+  - var/main.yml
+
+  roles:
+  - hostname
+  - geerlingguy.raspberry-pi
+  - nodejs
+  - python
+  - linux
+  - geerlingguy.redis
+  - security

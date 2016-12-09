@@ -1,0 +1,20 @@
+---
+- name: Main playbook | upgrade apt packages
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Main playbook | install additional packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - python-pip
+    - python3-pip
+    - python-virtualenv
+    - python3-virtualenv
+
+- name: Main playbook | update pip
+  pip: name=pip executable=pip extra_args='--upgrade'
+
+- name: Main playbook | update pip3
+  pip: name=pip executable=pip3 extra_args='--upgrade'
+
+- name: Main playbook | install python3 modules globally
+  pip: name=pylint executable=pip3
